@@ -1,0 +1,39 @@
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-12-04 20:09:57) [GET]
+
+ActionController::RoutingError (No route matches "/" with {:method=>:get}):
+  passenger (2.2.5) lib/phusion_passenger/rack/request_handler.rb:95:in `process_request'
+  passenger (2.2.5) lib/phusion_passenger/abstract_request_handler.rb:207:in `main_loop'
+  passenger (2.2.5) lib/phusion_passenger/railz/application_spawner.rb:378:in `start_request_handler'
+  passenger (2.2.5) lib/phusion_passenger/railz/application_spawner.rb:336:in `handle_spawn_application'
+  passenger (2.2.5) lib/phusion_passenger/utils.rb:183:in `safe_fork'
+  passenger (2.2.5) lib/phusion_passenger/railz/application_spawner.rb:334:in `handle_spawn_application'
+  passenger (2.2.5) lib/phusion_passenger/abstract_server.rb:352:in `__send__'
+  passenger (2.2.5) lib/phusion_passenger/abstract_server.rb:352:in `main_loop'
+  passenger (2.2.5) lib/phusion_passenger/abstract_server.rb:196:in `start_synchronously'
+  passenger (2.2.5) lib/phusion_passenger/abstract_server.rb:163:in `start'
+  passenger (2.2.5) lib/phusion_passenger/railz/application_spawner.rb:213:in `start'
+  passenger (2.2.5) lib/phusion_passenger/spawn_manager.rb:262:in `spawn_rails_application'
+  passenger (2.2.5) lib/phusion_passenger/abstract_server_collection.rb:126:in `lookup_or_add'
+  passenger (2.2.5) lib/phusion_passenger/spawn_manager.rb:256:in `spawn_rails_application'
+  passenger (2.2.5) lib/phusion_passenger/abstract_server_collection.rb:80:in `synchronize'
+  passenger (2.2.5) lib/phusion_passenger/abstract_server_collection.rb:79:in `synchronize'
+  passenger (2.2.5) lib/phusion_passenger/spawn_manager.rb:255:in `spawn_rails_application'
+  passenger (2.2.5) lib/phusion_passenger/spawn_manager.rb:154:in `spawn_application'
+  passenger (2.2.5) lib/phusion_passenger/spawn_manager.rb:287:in `handle_spawn_application'
+  passenger (2.2.5) lib/phusion_passenger/abstract_server.rb:352:in `__send__'
+  passenger (2.2.5) lib/phusion_passenger/abstract_server.rb:352:in `main_loop'
+  passenger (2.2.5) lib/phusion_passenger/abstract_server.rb:196:in `start_synchronously'
+
+Rendering rescues/layout (not_found)
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-12-04 20:19:36) [GET]
+Rendering template within layouts/application
+Rendering application/index
+Completed in 235ms (View: 232, DB: 0) | 200 OK [http://howgoodismyfood.local/]
