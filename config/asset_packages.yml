@@ -1,8 +1,0 @@
---- 
-javascripts: 
-- base: 
-  - application
-stylesheets: 
-- base:
-  - layout
-
