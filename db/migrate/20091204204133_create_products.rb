@@ -6,12 +6,13 @@ class CreateProducts < ActiveRecord::Migration
       
       t.decimal :portion,       :precision => 6, :scale => 2
       t.decimal :protein,       :precision => 5, :scale => 2
-      t.decimal :carbohydrates, :precision => 5, :scale => 2
+      t.decimal :carbohydrate,  :precision => 5, :scale => 2
+      t.decimal :sugar,         :precision => 5, :scale => 2
       t.decimal :fat,           :precision => 5, :scale => 2
       t.decimal :saturates,     :precision => 5, :scale => 2
       t.decimal :fibre,         :precision => 5, :scale => 2
       t.decimal :sodium,        :precision => 5, :scale => 2
-      t.decimal :added_sugars,  :precision => 5, :scale => 2
+      t.decimal :added_sugar,   :precision => 5, :scale => 2
       
       t.string  :barcode
       t.string  :kind
