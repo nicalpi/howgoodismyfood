@@ -1,18 +1,21 @@
 class CreateProducts < ActiveRecord::Migration
   def self.up
     create_table :products do |t|
-      t.string :name
-      t.decimal :portion
+      t.string  :name
       t.integer :energy
-      t.decimal :protein
-      t.decimal :carbohydrates
-      t.decimal :fat
-      t.decimal :saturates
-      t.decimal :fibre
-      t.decimal :sodium
-      t.decimal :added_sugars
-      t.string :barcode
-
+      
+      t.decimal :portion,       :precision => 6, :scale => 2
+      t.decimal :protein,       :precision => 5, :scale => 2
+      t.decimal :carbohydrates, :precision => 5, :scale => 2
+      t.decimal :fat,           :precision => 5, :scale => 2
+      t.decimal :saturates,     :precision => 5, :scale => 2
+      t.decimal :fibre,         :precision => 5, :scale => 2
+      t.decimal :sodium,        :precision => 5, :scale => 2
+      t.decimal :added_sugars,  :precision => 5, :scale => 2
+      
+      t.string  :barcode
+      t.string  :kind
+            
       t.timestamps
     end
   end

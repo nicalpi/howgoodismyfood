@@ -13,16 +13,17 @@ ActiveRecord::Schema.define(:version => 20091204204133) do
 
   create_table "products", :force => true do |t|
     t.string   "name"
-    t.integer  "portion",       :limit => 10, :precision => 10, :scale => 0
     t.integer  "energy"
-    t.integer  "protein",       :limit => 10, :precision => 10, :scale => 0
-    t.integer  "carbohydrates", :limit => 10, :precision => 10, :scale => 0
-    t.integer  "fat",           :limit => 10, :precision => 10, :scale => 0
-    t.integer  "saturates",     :limit => 10, :precision => 10, :scale => 0
-    t.integer  "fibre",         :limit => 10, :precision => 10, :scale => 0
-    t.integer  "sodium",        :limit => 10, :precision => 10, :scale => 0
-    t.integer  "added_sugars",  :limit => 10, :precision => 10, :scale => 0
+    t.decimal  "portion",       :precision => 6, :scale => 2
+    t.decimal  "protein",       :precision => 5, :scale => 2
+    t.decimal  "carbohydrates", :precision => 5, :scale => 2
+    t.decimal  "fat",           :precision => 5, :scale => 2
+    t.decimal  "saturates",     :precision => 5, :scale => 2
+    t.decimal  "fibre",         :precision => 5, :scale => 2
+    t.decimal  "sodium",        :precision => 5, :scale => 2
+    t.decimal  "added_sugars",  :precision => 5, :scale => 2
     t.string   "barcode"
+    t.string   "kind"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
