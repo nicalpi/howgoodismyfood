@@ -4,7 +4,17 @@
 class ApplicationController < ActionController::Base
   helper :all # include all helpers, all the time
   protect_from_forgery # See ActionController::RequestForgeryProtection for details
-
+  before_filter :metatag
   # Scrub sensitive parameters from your log
   # filter_parameter_logging :password
+
+  def index
+    
+  end
+
+  protected
+
+  def metatag
+    @page_title = "Welcome to howgoodismyfodd.com"
+  end
 end
