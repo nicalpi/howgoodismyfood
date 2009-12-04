@@ -1,2 +1,74 @@
+!text_color = "#E5E5E5"
+/* Reset
+
+html, body, div, span, h1, h2, h3, h4, h5, h6, ol, ul, li, dl, dt, dd, caption, table, tr, th, td, thead, tbody, tfoot, p, blockquote, cite, q, abbr, acronym, address, a, em, strong, img, ins, del, dfn, kbd, pre, xmp, code, form, fieldset, legend, label, button, object
+  :margin 0
+  :padding 0
+  &:focus 
+    :outline 0
+
+
+
 body
-  background-color:#000
+  :background-color #DDD
+
+#wrapper
+  :width 885px
+  :margin 10px auto
+  :text-align center
+  :color = #474747
+  hr
+    :width 95%
+    :border 1px solid !text_color
+
+#header
+  h1
+    :text-indent -3000000px
+    :background-image url(../images/logo.png)
+    :background-repeat no-repeat
+    :height 100px
+    :display block
+
+#content
+  :background-image url(../images/bg_content.png)
+  :background-repeat no-repeat
+  :padding 10px
+  :font-family Georgia,"Times New Roman",Times,serif
+  :font-size 15px
+  :font-style normal
+  :font-weight lighter
+  h3
+    :font-size 30px
+    :letter-spacing 2px
+
+#search
+  :margin 10px 0px
+  input[type='text']
+    :background-image url('../images/input_bg.png')
+    :background-repeat no-repeat
+    :background-color transparent
+    :padding 15px
+    :text-align center
+    :color = !text_color
+    :border 0px
+    :font-size 30px
+    :letter-spacing 2px
+    :font-weight bolder
+    :height 74px
+    :width 644px
+    :font-family Georgia,"Times New Roman",Times,serif
+  button
+    :display block
+    :margin auto
+    :width 108px
+    :font-size 20px
+    :font-weight bold
+    :background-image url(../images/submit-btn.png)
+    :font-family Verdana 
+    :border 0px
+    :background-color transparent
+    :color = !text_color 
+    &:hover,&:focus
+      :background-image url(../images/submit-btn-hover.png)
+      :cursor pointer
+      :color #F0F0D8

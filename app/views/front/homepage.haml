@@ -1,0 +1,6 @@
+%h3 Enter a product barcode
+- form_for products_path, :html => {:id => "search"} do |f|
+  = f.text_field :barcode
+  %button
+    Search
+
