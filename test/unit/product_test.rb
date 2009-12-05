@@ -107,14 +107,14 @@ class ProductTest < ActiveSupport::TestCase
 
   context "validating added_sugar" do  
     context "when added_sugar is not present" do
-      should "be invalid if total sugar is greater than 5g" do
-        @product = Factory.build :product, :sugar => 6, :added_sugar => nil
-        assert !@product.valid?
+      should "be valid" do
+        assert Factory.build( :product, :added_sugar => nil ).valid?
       end
-    
-      should "be valid if total sugar is =< 5g" do
-        @product = Factory.build :product, :sugar => 5, :added_sugar => nil
-        assert @product.valid?
+      
+      should "assume that all sugar is added" do
+        assert_equal :low,    Factory.build( :product, :sugar =>  5.0, :added_sugar => nil ).fsa[:sugar]
+        assert_equal :medium, Factory.build( :product, :sugar => 12.5, :added_sugar => nil ).fsa[:sugar]        
+        assert_equal :high,   Factory.build( :product, :sugar => 12.6, :added_sugar => nil ).fsa[:sugar]
       end
     end
     
@@ -132,6 +132,13 @@ class ProductTest < ActiveSupport::TestCase
       should "be valid if =< than total sugar" do
         @product = Factory.build :product, :sugar => 6, :added_sugar => 6
         assert @product.valid?
+      end
+      
+      should "not assume that all sugar is added" do
+        assert_equal :low,    Factory.build( :product, :sugar =>  5.0, :added_sugar => 0 ).fsa[:sugar]
+        assert_equal :medium, Factory.build( :product, :sugar => 12.5, :added_sugar => 0 ).fsa[:sugar]        
+        assert_equal :medium, Factory.build( :product, :sugar => 12.6, :added_sugar => 0 ).fsa[:sugar]
+        assert_equal :high,   Factory.build( :product, :sugar => 12.6, :added_sugar => 12.6 ).fsa[:sugar]
       end
     end
   end
