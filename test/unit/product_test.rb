@@ -34,6 +34,27 @@ class ProductTest < ActiveSupport::TestCase
       assert_equal "1234", product.barcode
     end
   end
+  
+  context "per_portion method" do
+    should "return only values that are present" do
+      missing = {:fibre => nil, :protein => nil, :fat => nil}
+      @product = Factory.build :product, missing
+      
+      (@product.ingredients - missing.keys).each {|present_ingredient|
+        assert @product.per_portion[present_ingredient], "Expected :#{present_ingredient} to be present in #{@product.per_portion.inspect}"
+      }
+      
+      missing.keys.each {|missing|
+        assert @product.per_portion[missing].nil?
+      }
+    end
+    
+    should "return correct number" do
+      @product = Factory.build :product, :portion => 50, :fat => 5
+      
+      assert_equal 2.5, @product.per_portion[:fat]
+    end
+  end
 
   context "validating added_sugar" do  
     context "when added_sugar is not present" do

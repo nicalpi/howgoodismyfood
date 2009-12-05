@@ -33,11 +33,24 @@ class Product < ActiveRecord::Base
       :sodium   => fsa_sodium
     }
   end
+  
+  def per_portion
+    @per_portion ||= ingredients.inject({}) do |hash,ingredient|
+      hash = {
+        ingredient => (portion / 100) * self[ingredient]
+      }.merge(hash) if self[ingredient]
+      hash
+    end
+  end
+  
+  def ingredients
+    [:sugar, :fat, :saturate, :sodium, :fibre, :protein, :carbohydrate, :added_sugar]
+  end
 
 private
   
   def fsa_fat
-    if (portion / 100) * fat > 21
+    if per_portion[:fat] > 21
       :red
     else
       case fat
@@ -49,7 +62,7 @@ private
   end
   
   def fsa_saturate
-    if (portion / 100) * saturate > 6
+    if per_portion[:saturate] > 6
       :red
     else
       case saturate
@@ -63,7 +76,7 @@ private
   def fsa_sugar
     if sugar <= 5
       :green
-    elsif  ((portion > 100 && (portion / 100) * added_sugar <= 15) || portion <= 100) && added_sugar <= 12.5
+    elsif  ((portion > 100 && per_portion[:added_sugar] <= 15) || portion <= 100) && added_sugar <= 12.5
       :amber
     else
       :red
@@ -71,7 +84,7 @@ private
   end
   
   def fsa_sodium
-    if (portion / 100) * sodium > 2.4
+    if per_portion[:sodium] > 2.4
       :red
     else
       case sodium
