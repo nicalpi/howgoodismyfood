@@ -75,12 +75,16 @@ class Product < ActiveRecord::Base
 private
   
   def fsa_sugar
-    if sugar <= 5
-      :green
-    elsif  ((portion > 100 && per_portion[:added_sugar] <= 15) || portion <= 100) && added_sugar <= 12.5
-      :amber
-    else
+    stat = fsa_boundries[:sugar]
+    if stat.has_key?(:high_per_portion) && per_portion[:sugar] > stat[:high_per_portion]
       :red
+    else
+      case self[:sugar]
+      when 0..stat[:medium_per_100].begin
+        :green
+      else
+        added_sugar <= stat[:medium_per_100].end ? :amber : :red
+      end
     end
   end
   
