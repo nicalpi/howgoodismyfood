@@ -1,23 +1,34 @@
 %h3 About
 %p
-  = link_to "Howgoodismyfood ","http://www.howgoodismyfood.com",:title => "How good is my food main page"
-  aim to provide a simple reading of nutritional informations present on food packaging.
+  = link_to "Howgoodismyfood", root_url, :title => "How good is my food"
+  aims to make sense of the nutritional information found on all food packaging.
 %p
-  After showing a Channel4 TV programs about food manufacturer comportement toward the labelling of their nutritional informations 
-  we decided to bring a simple application display the truth about what's in our food, using the <a href="http://www.food.gov.uk">FSA (Food Standards Agency)</a>  traffic light labelling.
+  After seeing a Channel4 TV program about the food industries behavior towards the labeling of their products
+  we decided to make a simple application that displayed the truth about what's in our food, using the
+  = link_to "FSA (Food Standards Agency)", "http://www.food.gov.uk"
+  traffic light system.
 
 %h3 How?
 %p
-  The <a href="http://www.eatwell.gov.uk/foodlabels/trafficlights/" title="FSA traffic light labelling explaination">FSA trafic light labelling</a> provide a very clear reading of the nutrional facts,
-  using value from fat, saturated fats,sugars and salt.
+  The 
+  = link_to "FSA traffic light labelling", "http://www.eatwell.gov.uk/foodlabels/trafficlights/"
+  provides a clear indiction of the nutritional value of a product. It is designed to be unambiguous and easy to read by the consumer
 %p
-  In the <a href="http://www.howgoodismyfood.com" title = "how good is my food main page">howgoodismyfood.com main page</a> simply enter the product barcode you want to check. 
-  If the product is available you'll be displayed the traffic light labelling of your product.
-  If the product is not availble you'll be prompted a simple form to fill, and then your labelling will be calcultate and display.
-  <b>As simple as it sounds</b>
+  In 
+  = link_to "howgoodismyfood.com", root_url, :title => "How good is my food"
+  you simply enter the product barcode you want to check. 
+  If the product is available you'll be displayed the traffic light labeling of the product.
+  If the product is not available you'll be prompted with a simple form to complete, and then the labeling can be calculated.
+  %b Easy!
 %p
-  You can use <a href="http://www.howgoodismyfood.com" title = "how good is my food website">howgoodismyfood</a> from you main computer or from your mobile, for free and without membership!
+  You can use
+  = link_to "howgoodismyfood", root_url, :title => "How good is my food"
+  from you main computer or from your mobile, for free and without membership!
+  
 %h3 Contact us!
 %p
-  If you any idea, inquieries about <a href="http://www.howgoodismyfood.com">howgoodismyfood</a> please do not hesitate to contact us on <a href="mailto:developers@howgoodismyfood.com" title = "howgoodismyfood.com developers">developers@howgoodismyfood.com</a>
+  If you any idea, inquieries about
+  = link_to "howgoodismyfood.com main page", root_url, :title => "How good is my food"
+  please do not hesitate to contact us on
+  = mail_to "developers@howgoodismyfood.com", "developers@howgoodismyfood.com"
 
