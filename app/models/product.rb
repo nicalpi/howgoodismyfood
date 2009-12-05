@@ -36,9 +36,9 @@ class Product < ActiveRecord::Base
   
   def per_portion
     @per_portion ||= ingredients.inject({}) do |hash,ingredient|
-      hash = {
+      hash.merge!(
         ingredient => (portion / 100) * self[ingredient]
-      }.merge(hash) if self[ingredient]
+      ) if self[ingredient]
       hash
     end
   end
