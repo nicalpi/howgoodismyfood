@@ -9,6 +9,8 @@ body {
   background-color: #DDD;
   font-family: Helvetica,"Times New Roman",Times,serif;
   background-image: url(../images/bg5.gif); }
+  body#homepage h3 {
+    display: none; }
 
 a {
   color: #E5E5E5;
@@ -112,6 +114,10 @@ form {
     font-weight: bolder;
     height: 74px;
     width: 644px; }
+    #search input[type='text'].inactive {
+      color: #666; }
+    #search input[type='text'].active {
+      color: #E5E5E5; }
 
 button {
   display: block;
@@ -129,11 +135,15 @@ button {
   button:hover, button:focus {
     background-color: #666;
     cursor: pointer;
-    color: #F0F0D8; }
+    color: #F0F0D8;
+    text-decoration: underline; }
   button.search {
-    background: url(../images/bigsearch.png) left 50% #333 no-repeat; }
+    background: url(../images/bigsearch.png) left 50% no-repeat; }
   button.save {
-    background: url(../images/add_32.png) left 50% #333 no-repeat; }
+    background: url(../images/add_32.png) left 50% no-repeat;
+    color: #333; }
+    button.save:hover, button.save:focus {
+      color: #666; }
 
 #new_product {
   margin: auto;
