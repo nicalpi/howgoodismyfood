@@ -7,7 +7,7 @@ class ProductsController < ApplicationController
       @product = Product.new
       render :new
     else
-      set_metadata(:page_title => @product.name,:description => "#{@production.name} truth behind nutrional values")
+      set_metadata(:page_title => @product.name,:description => "#{@product.name} truth behind nutrional values")
       render :show
     end
   end
