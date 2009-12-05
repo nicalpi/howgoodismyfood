@@ -147,28 +147,28 @@ class ProductTest < ActiveSupport::TestCase
         should "return correct fat traffic light" do
           @examples.each do |e|
             p = Product.new(e[:nutrition])
-            assert_equal e[:banding][:fat], p.fsa[:fat]
+            assert_equal e[:banding][:fat], p.fsa[:fat], "Was expecting #{e[:banding][:fat]} but got #{p.fsa[:fat]} for #{e[:nutrition].inspect}"
           end
         end
 
         should "return correct saturates traffic light" do
           @examples.each do |e|
             p = Product.new(e[:nutrition])
-            assert_equal e[:banding][:saturate], p.fsa[:saturate]
+            assert_equal e[:banding][:saturate], p.fsa[:saturate], "Was expecting #{e[:banding][:saturate]} but got #{p.fsa[:saturate]} for #{e[:nutrition].inspect}"
           end
         end
 
         should "return correct sugars traffic light" do
           @examples.each do |e|
             p = Product.new(e[:nutrition])
-            assert_equal e[:banding][:sugar], p.fsa[:sugar]
+            assert_equal e[:banding][:sugar], p.fsa[:sugar], "Was expecting #{e[:banding][:sugar]} but got #{p.fsa[:sugar]} for #{e[:nutrition].inspect}"
           end
         end
 
         should "return correct sodium traffic light" do
           @examples.each do |e|
             p = Product.new(e[:nutrition])
-            assert_equal e[:banding][:sodium], p.fsa[:sodium]
+            assert_equal e[:banding][:sodium], p.fsa[:sodium], "Was expecting #{e[:banding][:sodium]} but got #{p.fsa[:sodium]} for #{e[:nutrition].inspect}"
           end
         end
       end

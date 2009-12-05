@@ -21,16 +21,20 @@ class Product < ActiveRecord::Base
   
   validate :added_sugar_amount_correct?
   
+  def kind
+    read_attribute(:kind) || "food"
+  end
+  
   def barcode=(code)
     write_attribute(:barcode, code.upcase.gsub(/[ \-]/,"") )
   end
   
   def fsa
     {
-      :fat      => fsa_fat,
+      :fat      => fsa_calculation( :fat ),
       :sugar    => fsa_sugar,
-      :saturate => fsa_saturate,
-      :sodium   => fsa_sodium
+      :saturate => fsa_calculation( :saturate ),
+      :sodium   => fsa_calculation( :sodium )
     }
   end
   
@@ -47,31 +51,28 @@ class Product < ActiveRecord::Base
     [:sugar, :fat, :saturate, :sodium, :fibre, :protein, :carbohydrate, :added_sugar]
   end
 
+  def self.fsa_boundries
+    {
+      "drink" => {
+        :fat      => {:medium_per_100 => 1.50..10.00 },
+        :saturate => {:medium_per_100 => 0.75..2.50  },
+        :sugar    => {:medium_per_100 => 2.50..6.30  },
+        :sodium   => {:medium_per_100 => 0.30..1.50  },
+      },    
+      "food"  => {
+        :fat      => {:medium_per_100 => 3.00..20.00, :high_per_portion => 21.00 },
+        :saturate => {:medium_per_100 => 1.50..5.00,  :high_per_portion =>  6.00 },
+        :sugar    => {:medium_per_100 => 5.00..12.50, :high_per_portion => 15.00 },
+        :sodium   => {:medium_per_100 => 0.30..1.50,  :high_per_portion =>  2.40 },
+      }
+    }
+  end
+
+  def fsa_boundries
+    self.class.fsa_boundries[ self.kind ]
+  end
+  
 private
-  
-  def fsa_fat
-    if per_portion[:fat] > 21
-      :red
-    else
-      case fat
-        when 0..3  : :green
-        when 3..20 : :amber
-        else :red
-      end
-    end
-  end
-  
-  def fsa_saturate
-    if per_portion[:saturate] > 6
-      :red
-    else
-      case saturate
-        when 0..1.5 : :green
-        when 1.5..5 : :amber
-        else :red
-      end
-    end
-  end
   
   def fsa_sugar
     if sugar <= 5
@@ -83,13 +84,14 @@ private
     end
   end
   
-  def fsa_sodium
-    if per_portion[:sodium] > 2.4
+  def fsa_calculation(attribute)
+    stat = fsa_boundries[attribute]
+    if stat.has_key?(:high_per_portion) && per_portion[attribute] > stat[:high_per_portion]
       :red
     else
-      case sodium
-        when 0..0.3 : :green
-        when 0.3..1.5 : :amber
+      case self[attribute]
+        when 0..stat[:medium_per_100].begin : :green
+        when stat[:medium_per_100]          : :amber
         else :red
       end
     end
