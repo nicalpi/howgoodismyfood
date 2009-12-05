@@ -4,6 +4,8 @@
   %head
     %title= h(@page_title)
     / loading stylesheets
+    %link{ :rel => "shortcut icon", :href => "/favicon.ico"}
+
     = stylesheet_link_tag "layout"
 
     / Loading javascript
@@ -17,4 +19,4 @@
       #content
         = yield
       #carousel
-      #footer
+    #footer

@@ -1,0 +1,9 @@
+%h3 
+  = @product.name
+%ul#fsa_results
+  - @product.fsa.each do |value,result|
+    %li{:class => result}
+      %span
+        = value.to_s.capitalize
+
+

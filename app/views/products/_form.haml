@@ -1,0 +1,46 @@
+%h3 Sorry, the product doesn't exist yet.
+%p By filling the form bellow, you'll create the product and we'll display the results.
+- form_for @product do |f|
+  - unless flash[:error].blank?
+    #flash.error
+      = flash[:error]
+
+  = f.label :barcode,"Barcode"
+  = f.text_field :barcode, :value => params[:q]
+  %br
+  = f.label :name, "Name"
+  = f.text_field :name
+  %br
+  = label_tag "product_kind","Product type"
+  = radio_button "product","kind", "food" 
+  = label_tag "product_kind_food", "Food"
+
+  = radio_button "product","kind", "drink"
+  = label_tag "product_kind_drink", "Drink"
+  %br
+  = f.label :sugar, "Sugar:"
+  = f.text_field :sugar
+  %span.per per 100g
+  %br
+  = f.label :added_sugar, "Added sugar:"
+  = f.text_field :added_sugar
+  %span.per per 100g
+  %br
+  = f.label :fat, "Fat:"
+  = f.text_field :fat
+  %span.per per 100g
+  %br
+  = f.label :saturate, "Saturates:"
+  = f.text_field :saturate
+  %span.per per 100g
+  %br
+  = f.label :sodium, "Salt:"
+  = f.text_field :sodium
+  %span.per per 100g
+  %br
+  = f.label :portion, "Typical portion:"
+  = f.text_field :portion
+  %span.per in g
+  
+  %button
+    Save

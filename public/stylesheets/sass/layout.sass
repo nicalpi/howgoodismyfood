@@ -1,4 +1,9 @@
 !text_color = "#E5E5E5"
+
+=rounded(!radius = 3px)
+  :border-radius = !radius
+  :-moz-border-radius = !radius
+  :-webkit-border-radius = !radius
 /* Reset
 
 html, body, div, span, h1, h2, h3, h4, h5, h6, ol, ul, li, dl, dt, dd, caption, table, tr, th, td, thead, tbody, tfoot, p, blockquote, cite, q, abbr, acronym, address, a, em, strong, img, ins, del, dfn, kbd, pre, xmp, code, form, fieldset, legend, label, button, object
@@ -6,17 +11,15 @@ html, body, div, span, h1, h2, h3, h4, h5, h6, ol, ul, li, dl, dt, dd, caption, 
   :padding 0
   &:focus 
     :outline 0
-
-
-
 body
   :background-color #DDD
-
+  :font-family Helvetica,"Times New Roman",Times,serif
+  :background-image url(../images/bg5.gif)
 #wrapper
-  :width 885px
+  :width 700px
   :margin 10px auto
   :text-align center
-  :color = #474747
+  :color = !text_color
   hr
     :width 95%
     :border 1px solid !text_color
@@ -27,21 +30,67 @@ body
     :background-image url(../images/logo.png)
     :background-repeat no-repeat
     :height 100px
+    :width 385px
+    :margin auto
     :display block
 
 #content
-  :background-image url(../images/bg_content.png)
+
+  :-moz-rounded-border 5px
   :background-repeat no-repeat
   :padding 10px
-  :font-family Georgia,"Times New Roman",Times,serif
   :font-size 15px
   :font-style normal
   :font-weight lighter
   h3
     :font-size 30px
     :letter-spacing 2px
+  p
+    :font-size 18px
+    :margin-bottom 10px
+  ul#fsa_results
+    :margin 15px auto
+    :list-style none
+    :width 385px
+    li
+      :font-size 20px
+      :font-weight bold
+      :width 385px
+      :height 66px
+      :background-repeat no-repeat
+      :margin-bottom 10px
+      :color #000
+      :letter-spacing 1px
+      &.green
+        :background-image url(../images/green.png)
+      &.amber
+        :background-image url(../images/amber.png)
+      &.red
+        :background-image url(../images/red.png)
+      span
+        :padding 20px
+        :display block
+        :text-align left
+        :margin-left 50px
 
+
+form
+  :background-color #EEE
+  :padding 15px
+  :color #474747
+  +rounded(10px)
+  .fieldWithErrors
+    :display inline-block
+    :color #DF8F8F
+  #flash.error
+    :color #DF8F8F
+    :text-align center
+    :margin 10px
+    :font-size 15px
+    :font-weight bold
+    :text-decoration italic
 #search
+  :background-color transparent
   :margin 10px 0px
   input[type='text']
     :background-image url('../images/input_bg.png')
@@ -56,19 +105,41 @@ body
     :font-weight bolder
     :height 74px
     :width 644px
-    :font-family Georgia,"Times New Roman",Times,serif
-  button
-    :display block
-    :margin auto
-    :width 108px
-    :font-size 20px
+
+button
+  :display block
+  :margin auto
+  :width 108px
+  :font-size 20px
+  :font-weight bold
+  :background-image url(../images/submit-btn.png)
+  :border 0px
+  :background-color transparent
+  :color = !text_color
+  :position relative
+  :right 5px
+  &:hover,&:focus
+    :background-image url(../images/submit-btn-hover.png)
+    :cursor pointer
+    :color #F0F0D8
+
+#new_product
+  :margin auto
+  :text-align left
+  :width 500px
+  label
+    :font-size 15px
     :font-weight bold
-    :background-image url(../images/submit-btn.png)
-    :font-family Verdana 
-    :border 0px
-    :background-color transparent
-    :color = !text_color 
-    &:hover,&:focus
-      :background-image url(../images/submit-btn-hover.png)
-      :cursor pointer
-      :color #F0F0D8
+    :display inline-block
+    :width 110px
+    :margin 10px 0px
+  label#product_kind_food, label#product_kind_drink
+    :display inline
+  input[type='text']
+    :width 300px
+    :font-size 15px
+    :line-height 18px
+    :border 1px solid #474747 
+    :padding 5px
+  .per
+    :font-size 15px
