@@ -15,6 +15,18 @@ body
   :background-color #DDD
   :font-family Helvetica,"Times New Roman",Times,serif
   :background-image url(../images/bg5.gif)
+
+
+a
+  :color = !text_color
+  :text-decoration underline
+  &:hover,&:focus
+    :text-decoration underline
+    :font-weight bold
+a.back
+  :padding-left 18px
+  :background url(../images/search.png) left 50%
+  :background-repeat no-repeat
 #wrapper
   :width 700px
   :margin 10px auto
@@ -109,20 +121,23 @@ form
 button
   :display block
   :margin auto
-  :width 108px
   :font-size 20px
   :font-weight bold
-  :background-image url(../images/submit-btn.png)
+
+  :padding 0px 10px 0px 30px
+  +rounded(5px)
   :border 0px
-  :background-color transparent
   :color = !text_color
   :position relative
   :right 5px
   &:hover,&:focus
-    :background-image url(../images/submit-btn-hover.png)
+    :background-color #666
     :cursor pointer
     :color #F0F0D8
-
+  &.search
+    :background url(../images/bigsearch.png) left 50% #333 no-repeat
+  &.save
+    :background url(../images/add_32.png) left 50% #333 no-repeat
 #new_product
   :margin auto
   :text-align left
@@ -151,9 +166,3 @@ button
   :color = !text_color
   :font-family verdana
   :font-size 12px
-  a
-    :color = !text_color
-    :text-decoration underline
-    &:hover,&:focus
-      :text-decoration underline
-      :font-weight bold

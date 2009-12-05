@@ -10,6 +10,18 @@ body {
   font-family: Helvetica,"Times New Roman",Times,serif;
   background-image: url(../images/bg5.gif); }
 
+a {
+  color: #E5E5E5;
+  text-decoration: underline; }
+  a:hover, a:focus {
+    text-decoration: underline;
+    font-weight: bold; }
+
+a.back {
+  padding-left: 18px;
+  background: url(../images/search.png) left 50%;
+  background-repeat: no-repeat; }
+
 #wrapper {
   width: 700px;
   margin: 10px auto;
@@ -104,19 +116,24 @@ form {
 button {
   display: block;
   margin: auto;
-  width: 108px;
   font-size: 20px;
   font-weight: bold;
-  background-image: url(../images/submit-btn.png);
+  padding: 0px 10px 0px 30px;
+  border-radius: 5px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
   border: 0px;
-  background-color: transparent;
   color: #E5E5E5;
   position: relative;
   right: 5px; }
   button:hover, button:focus {
-    background-image: url(../images/submit-btn-hover.png);
+    background-color: #666;
     cursor: pointer;
     color: #F0F0D8; }
+  button.search {
+    background: url(../images/bigsearch.png) left 50% #333 no-repeat; }
+  button.save {
+    background: url(../images/add_32.png) left 50% #333 no-repeat; }
 
 #new_product {
   margin: auto;
@@ -146,9 +163,3 @@ button {
   color: #E5E5E5;
   font-family: verdana;
   font-size: 12px; }
-  #footer a {
-    color: #E5E5E5;
-    text-decoration: underline; }
-    #footer a:hover, #footer a:focus {
-      text-decoration: underline;
-      font-weight: bold; }

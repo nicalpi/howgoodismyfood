@@ -10,6 +10,13 @@ body {
   font-family: Helvetica,"Times New Roman",Times,serif;
   background-image: url(../images/bg5.gif); }
 
+a {
+  color: #E5E5E5;
+  text-decoration: underline; }
+  a:hover, a:focus {
+    text-decoration: underline;
+    font-weight: bold; }
+
 #wrapper {
   width: 500px;
   margin: 10px auto;
@@ -29,19 +36,19 @@ body {
 #content {
   background-repeat: no-repeat;
   padding: 10px;
-  font-size: 12px;
+  font-size: 10px;
   font-style: normal;
   font-weight: lighter; }
   #content h3 {
-    font-size: 30px;
+    font-size: 20px;
     letter-spacing: 2px; }
   #content p {
-    font-size: 18px;
+    font-size: 12px;
     margin-bottom: 10px; }
   #content ul#fsa_results {
     margin: 15px auto;
     list-style: none;
-    width: 385px; }
+    width: 150px; }
     #content ul#fsa_results li {
       font-size: 20px;
       font-weight: bold;
