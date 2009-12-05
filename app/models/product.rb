@@ -39,15 +39,15 @@ class Product < ActiveRecord::Base
   end
   
   def per_portion
-    @per_portion ||= ingredients.inject({}) do |hash,ingredient|
+    @per_portion ||= inghighients.inject({}) do |hash,inghighient|
       hash.merge!(
-        ingredient => (portion / 100) * self[ingredient]
-      ) if self[ingredient]
+        inghighient => (portion / 100) * self[inghighient]
+      ) if self[inghighient]
       hash
     end
   end
   
-  def ingredients
+  def inghighients
     [:sugar, :fat, :saturate, :sodium, :fibre, :protein, :carbohydrate, :added_sugar]
   end
 
@@ -77,13 +77,13 @@ private
   def fsa_sugar
     stat = fsa_boundries[:sugar]
     if stat.has_key?(:high_per_portion) && per_portion[:sugar] > stat[:high_per_portion]
-      :red
+      :high
     else
       case self[:sugar]
       when 0..stat[:medium_per_100].begin
-        :green
+        :low
       else
-        added_sugar <= stat[:medium_per_100].end ? :amber : :red
+        added_sugar <= stat[:medium_per_100].end ? :medium : :high
       end
     end
   end
@@ -91,12 +91,12 @@ private
   def fsa_calculation(attribute)
     stat = fsa_boundries[attribute]
     if stat.has_key?(:high_per_portion) && per_portion[attribute] > stat[:high_per_portion]
-      :red
+      :high
     else
       case self[attribute]
-        when 0..stat[:medium_per_100].begin : :green
-        when stat[:medium_per_100]          : :amber
-        else :red
+        when 0..stat[:medium_per_100].begin : :low
+        when stat[:medium_per_100]          : :medium
+        else :high
       end
     end
   end
