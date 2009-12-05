@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
   protected
 
   def set_metadata(options ={})
-    @page_title = "Serialcooking | " + options[:page_title] ||= ""
+    @page_title = "Howgoodismyfood | " + options[:page_title] ||= ""
     @description = options[:description] ||= "Serialcooking, bring the web into your kitchen"
     @tags = options[:tags] ||= "cooking,food,recipe,blogs"
     @body_id = options[:body_id] ||= ""

@@ -1,10 +1,27 @@
 %h3 
   = @product.name
 %ul#fsa_results
-  - @product.fsa.each do |value,result|
-    %li{:class => result}
-      %span
-        = value.to_s.capitalize
+  %li{:class => @product.fsa[:fat]}
+    %span 
+      Fat: 
+      %em.per
+        = "#{@product.per_portion[:fat]} per serving"
+  %li{:class => @product.fsa[:saturate]}
+    %span 
+      Saturates:
+      %em.per
+        = "#{@product.per_portion[:saturate]} per serving"
+  %li{:class => @product.fsa[:sugar]}
+    %span 
+      Sugars:
+      %em.per
+        = "#{@product.per_portion[:sugar]} per serving"
+  %li{:class => @product.fsa[:sodium]}
+    %span 
+      Salt:
+      %em.per
+        = "#{@product.per_portion[:sodium]} per serving"
+
 = link_to "Another search?", root_path,:class => "back"
 
 
