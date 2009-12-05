@@ -11,7 +11,8 @@ class Product < ActiveRecord::Base
   validates_inclusion_of :sugar,        :in => 0..100
   validates_inclusion_of :fat,          :in => 0..100
   validates_inclusion_of :saturate,     :in => 0..100
-  validates_inclusion_of :sodium,       :in => 0..100
+  validates_inclusion_of :sodium,       :in => 0..100,   :if => Proc.new { |p| !p.salt? || p.sodium?  }
+  validates_inclusion_of :salt,         :in => 0..100,   :if => Proc.new { |p| p.salt?  || !p.sodium? }  
   validates_inclusion_of :fibre,        :in => 0..100,   :allow_nil => true
   validates_inclusion_of :protein,      :in => 0..100,   :allow_nil => true
   validates_inclusion_of :carbohydrate, :in => 0..100,   :allow_nil => true
@@ -34,21 +35,21 @@ class Product < ActiveRecord::Base
       :fat      => fsa_calculation( :fat ),
       :sugar    => fsa_sugar,
       :saturate => fsa_calculation( :saturate ),
-      :sodium   => fsa_calculation( :sodium )
+      :salt     => fsa_calculation( :sodium_expressed_as_salt )
     }
   end
   
   def per_portion
-    @per_portion ||= ingredients.inject({}) do |hash,ingredients|
+    @per_portion ||= ingredients.inject({}) do |hash,ingredient|
       hash.merge!(
-        ingredients => (portion / 100) * self[ingredients]
-      ) if self[ingredients]
+        ingredient => (portion / 100) * self.send( ingredient )
+      ) if self.send( ingredient )
       hash
     end
   end
   
   def ingredients
-    [:sugar, :fat, :saturate, :sodium, :salt, :fibre, :protein, :carbohydrate, :added_sugar]
+    [:sugar, :fat, :saturate, :sodium, :salt, :fibre, :protein, :carbohydrate, :added_sugar, :sodium_expressed_as_salt]
   end
 
   def self.fsa_boundries
@@ -57,13 +58,13 @@ class Product < ActiveRecord::Base
         :fat      => {:medium_per_100 => 1.50..10.00 },
         :saturate => {:medium_per_100 => 0.75..2.50  },
         :sugar    => {:medium_per_100 => 2.50..6.30  },
-        :sodium   => {:medium_per_100 => 0.30..1.50  },
+        :sodium_expressed_as_salt => {:medium_per_100 => 0.30..1.50  },
       },    
       "food"  => {
         :fat      => {:medium_per_100 => 3.00..20.00, :high_per_portion => 21.00 },
         :saturate => {:medium_per_100 => 1.50..5.00,  :high_per_portion =>  6.00 },
         :sugar    => {:medium_per_100 => 5.00..12.50, :high_per_portion => 15.00 },
-        :sodium   => {:medium_per_100 => 0.30..1.50,  :high_per_portion =>  2.40 },
+        :sodium_expressed_as_salt => {:medium_per_100 => 0.30..1.50,  :high_per_portion =>  2.40 },
       }
     }
   end
@@ -73,7 +74,11 @@ class Product < ActiveRecord::Base
   end
   
 private
-  
+
+  def sodium_expressed_as_salt
+    sodium? ? sodium * 2.5 : salt || 0
+  end
+    
   def fsa_sugar
     stat = fsa_boundries[:sugar]
     if stat.has_key?(:high_per_portion) && per_portion[:sugar] > stat[:high_per_portion]
@@ -93,7 +98,7 @@ private
     if stat.has_key?(:high_per_portion) && per_portion[attribute] > stat[:high_per_portion]
       :high
     else
-      case self[attribute]
+      case self.send(attribute)
         when 0..stat[:medium_per_100].begin : :low
         when stat[:medium_per_100]          : :medium
         else :high
