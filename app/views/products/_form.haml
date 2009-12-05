@@ -6,10 +6,10 @@
       = flash[:error]
   %ul
     %li
-      = f.label :barcode,"Barcode"
+      = f.label :barcode,"Barcode:"
       = f.text_field :barcode, :value => params[:q]
     %li
-      = f.label :name, "Name"
+      = f.label :name, "Name:"
       = f.text_field :name
     %li
       = label_tag "product_kind","Product type"
