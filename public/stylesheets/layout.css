@@ -10,7 +10,7 @@ body {
   font-family: Helvetica,"Times New Roman",Times,serif;
   background-image: url(../images/bg5.gif); }
   body#homepage h3 {
-    display: none; }
+    margin-bottom: 10px; }
 
 a {
   color: #E5E5E5;

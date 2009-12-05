@@ -3,9 +3,11 @@ class ProductsController < ApplicationController
   def index
     @product = Product.find_by_barcode(params[:q])
     if @product.blank?
+      set_metadata(:page_title => "Enter a new product",:description => "Help howgoodismyfood.com by adding more products to the database")
       @product = Product.new
       render :new
     else
+      set_metadata(:page_title => @product.name,:description => "#{@production.name} truth behind nutrional values")
       render :show
     end
   end
@@ -16,7 +18,7 @@ class ProductsController < ApplicationController
 
   def show
     @product = Product.find(params[:id])
-    set_metadata(:page_title => @product.name)
+    set_metadata(:page_title => @product.name,:description => "#{@production.name} truth behind nutrional values")
   end
 
   def create

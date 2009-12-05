@@ -5,6 +5,7 @@
     %title= h(@page_title)
     / loading stylesheets
     %link{ :rel => "shortcut icon", :href => "/favicon.ico"}
+    %meta{:name => "description", :content => @description}
 
     = stylesheet_link_tag "layout", :media => "screen"
     = stylesheet_link_tag "mobile", :media => "handheld"
