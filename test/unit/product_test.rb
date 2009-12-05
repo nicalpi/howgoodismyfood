@@ -138,7 +138,62 @@ class ProductTest < ActiveSupport::TestCase
   
   context "FSA Traffic light signpost labelling for" do
     context "drink" do
-    
+      context "testing sugar" do
+        should "be low for <= 2.5" do
+          assert_equal :low, Factory.build(:product, :kind => 'drink', :sugar => 2.5).fsa[:sugar]
+        end
+        
+        should "be medium for 2.5 to 6.3" do
+          assert_equal :medium, Factory.build(:product, :kind => 'drink', :sugar => 8, :added_sugar => 0).fsa[:sugar]
+          assert_equal :medium, Factory.build(:product, :kind => 'drink', :sugar => 8, :added_sugar => 6.3).fsa[:sugar]
+        end
+        
+        should "be high for > 6.3" do
+          assert_equal :high, Factory.build(:product, :kind => 'drink', :sugar => 6.4, :added_sugar => 6.4).fsa[:sugar]
+        end
+      end
+      
+      context "testing fat" do
+        should "be low for fat <= 1.5" do
+          assert_equal :low, Factory.build(:product, :kind => 'drink', :fat => 0.75).fsa[:fat]
+        end
+        
+        should "be medium for 1.5 to 10" do
+          assert_equal :medium, Factory.build(:product, :kind => 'drink', :fat => 10).fsa[:fat]
+        end
+        
+        should "be high for > 10" do
+          assert_equal :high, Factory.build(:product, :kind => 'drink', :fat => 11).fsa[:fat]
+        end
+      end
+      
+      context "testing saturate" do
+        should "be low for <= 0.75" do
+          assert_equal :low, Factory.build(:product, :kind => 'drink', :saturate => 0.75).fsa[:saturate]
+        end
+        
+        should "be medium for 0.75 to 2.5" do
+          assert_equal :medium, Factory.build(:product, :kind => 'drink', :saturate => 1.75).fsa[:saturate]
+        end
+        
+        should "be high for > 2.5" do
+          assert_equal :high, Factory.build(:product, :kind => 'drink', :saturate => 2.6).fsa[:saturate]
+        end
+      end
+      
+      context "testing salt" do
+        should "be low for < 0.3" do
+          assert_equal :low, Factory.build(:product, :kind => 'drink', :salt => 0.3).fsa[:salt]
+        end
+        
+        should "be medium for 0.3 to 1.5" do
+          assert_equal :medium, Factory.build(:product, :kind => 'drink', :salt => 0.75).fsa[:salt]
+        end
+        
+        should "be high for > 1.5" do
+          assert_equal :high, Factory.build(:product, :kind => 'drink', :salt => 1.51).fsa[:salt]
+        end
+      end
     end
     
     context "food" do
