@@ -107,13 +107,23 @@ class ProductTest < ActiveSupport::TestCase
 
   context "validating added_sugar" do  
     context "when added_sugar is not present" do
-      should "be invalid if total sugar is greater than 5g" do
-        @product = Factory.build :product, :sugar => 6, :added_sugar => nil
+      should "be invalid if total sugar is greater than 5g and item is a food" do
+        @product = Factory.build :product, :kind => "food", :sugar => 6, :added_sugar => nil
+        assert !@product.valid?
+      end
+      
+      should "be invalid if total sugar is greater than 2.5g and item is a drink" do
+        @product = Factory.build :product, :kind => "drink", :sugar => 2.6, :added_sugar => nil
         assert !@product.valid?
       end
     
-      should "be valid if total sugar is =< 5g" do
-        @product = Factory.build :product, :sugar => 5, :added_sugar => nil
+      should "be valid if total sugar is =< 5g and item is a food" do
+        @product = Factory.build :product, :kind => "food", :sugar => 5, :added_sugar => nil
+        assert @product.valid?
+      end
+      
+      should "be valid if total sugar is =< 2.5g and item is a drink" do
+        @product = Factory.build :product, :kind => "drink", :sugar => 2.5, :added_sugar => nil
         assert @product.valid?
       end
     end

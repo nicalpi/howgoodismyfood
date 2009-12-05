@@ -111,7 +111,7 @@ private
   end
   
   def added_sugars_needed?
-    sugar? && sugar > 5
+    sugar? && fsa_boundries && sugar > fsa_boundries[:sugar][:medium_per_100].begin
   end
   
 end
