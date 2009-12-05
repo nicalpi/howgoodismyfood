@@ -15,7 +15,9 @@ body
   :background-color #DDD
   :font-family Helvetica,"Times New Roman",Times,serif
   :background-image url(../images/bg5.gif)
-
+  &#homepage
+    h3
+      :display none
 
 a
   :color = !text_color
@@ -117,6 +119,10 @@ form
     :font-weight bolder
     :height 74px
     :width 644px
+    &.inactive
+      :color #666
+    &.active
+      :color = !text_color
 
 button
   :display block
@@ -134,10 +140,14 @@ button
     :background-color #666
     :cursor pointer
     :color #F0F0D8
+    :text-decoration underline
   &.search
-    :background url(../images/bigsearch.png) left 50% #333 no-repeat
+    :background url(../images/bigsearch.png) left 50% no-repeat
   &.save
-    :background url(../images/add_32.png) left 50% #333 no-repeat
+    :background url(../images/add_32.png) left 50% no-repeat
+    :color #333
+    &:hover,&:focus
+      :color #666
 #new_product
   :margin auto
   :text-align left

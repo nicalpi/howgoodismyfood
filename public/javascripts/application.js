@@ -17,6 +17,31 @@ jQuery(document).ready(function(){
     
   });
 
+  //Home search display default text and toggle display
+  var home_input = $("#homepage #search input[type='text']");
+  home_input.val("Enter your product barcode");
+  home_input.addClass('inactive');
+  home_input.focus(function(){
+      home_input.addClass('active');
+      home_input.removeClass('inactive');
+      if ($(this).val() == "Enter your product barcode"){
+        $(this).val("");
+      }
+      });
+
+
+  home_input.blur(function(){
+      if($(this).val() == "Enter your product barcode")
+      {
+      $(this).addClass('inactive')
+      $(this).removeClass('active');
+      }
+      if($(this).val() == ""){
+        $(this).addClass('inactive')
+        $(this).removeClass('active');
+        $(this).val("Enter your product barcode");
+      }
+      });
 });
 
 
