@@ -39,16 +39,16 @@ class Product < ActiveRecord::Base
   end
   
   def per_portion
-    @per_portion ||= inghighients.inject({}) do |hash,inghighient|
+    @per_portion ||= ingredients.inject({}) do |hash,ingredients|
       hash.merge!(
-        inghighient => (portion / 100) * self[inghighient]
-      ) if self[inghighient]
+        ingredients => (portion / 100) * self[ingredients]
+      ) if self[ingredients]
       hash
     end
   end
   
-  def inghighients
-    [:sugar, :fat, :saturate, :sodium, :fibre, :protein, :carbohydrate, :added_sugar]
+  def ingredients
+    [:sugar, :fat, :saturate, :sodium, :salt, :fibre, :protein, :carbohydrate, :added_sugar]
   end
 
   def self.fsa_boundries
