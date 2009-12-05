@@ -18,7 +18,7 @@ class Product < ActiveRecord::Base
   validates_inclusion_of :carbohydrate, :in => 0..100,   :allow_nil => true
   validates_inclusion_of :energy,       :in => 0..10000, :allow_nil => true
   validates_inclusion_of :carbohydrate, :in => 0..100,   :allow_nil => true
-  validates_inclusion_of :added_sugar,  :in => 0..100,   :if => :added_sugars_needed?
+  validates_inclusion_of :added_sugar,  :in => 0..100,   :allow_nil => true
   
   validate :added_sugar_amount_correct?
   
@@ -78,7 +78,7 @@ private
   def sodium_expressed_as_salt
     sodium? ? sodium * 2.5 : salt || 0
   end
-    
+      
   def fsa_sugar
     stat = fsa_boundries[:sugar]
     if stat.has_key?(:high_per_portion) && per_portion[:sugar] > stat[:high_per_portion]
@@ -88,7 +88,8 @@ private
       when 0..stat[:medium_per_100].begin
         :low
       else
-        added_sugar <= stat[:medium_per_100].end ? :medium : :high
+        # If added sugar is present use that, else assume all sugar is added
+        (added_sugar || sugar) <= stat[:medium_per_100].end ? :medium : :high 
       end
     end
   end
@@ -108,10 +109,6 @@ private
   
   def added_sugar_amount_correct?
     errors.add :added_sugar, 'must be less than total sugars' if added_sugar? && (added_sugar > sugar)
-  end
-  
-  def added_sugars_needed?
-    sugar? && fsa_boundries && sugar > fsa_boundries[:sugar][:medium_per_100].begin
   end
   
 end
