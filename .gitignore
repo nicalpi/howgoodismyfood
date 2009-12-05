@@ -1,4 +1,4 @@
-config/deploy/*
+config/deploy/production.rb
 *.log
 tmp/*
 public/stylesheets/*.css

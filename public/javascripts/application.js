@@ -5,22 +5,26 @@ jQuery(document).ready(function(){
       //Type is food so the unit needs to be gr
       $(".per").each(function(){
         $(this).html($(this).html().replace(/100ml/,"100g"));  
+        $(this).html($(this).html().replace(/in ml/,"in g"));
+        
       });
     }
     else{
       //Type is drink so the unit needs to be ml
       $(".per").each(function(){
         $(this).html($(this).html().replace(/100g/,"100ml"));  
+        $(this).html($(this).html().replace(/in g/,"in ml"));
       });
     }
     
-    
+    added_sugar_test();
   });
 
-  if($("input[type='radio'][name='product[kind]']").is(':checked')){
+  if($("#product_kind_drink").is(':checked')){
     
       $(".per").each(function(){
         $(this).html($(this).html().replace(/100g/,"100ml"));  
+        $(this).html($(this).html().replace(/in g/,"in ml"));
       });
   }
   added_sugar_test();
@@ -58,7 +62,7 @@ jQuery(document).ready(function(){
 
 function added_sugar_test(){
 
-    if($("#product_sugar").val() > 5){
+    if(($("#product_sugar").val() > 5 && $("#product_kind_food").is(':checked')) || ($("#product_sugar").val()>2.5 && $("#product_kind_drink").is(':checked'))){
       $(".added_sugar").show();
     }
     else
