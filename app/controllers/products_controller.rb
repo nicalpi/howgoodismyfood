@@ -16,6 +16,7 @@ class ProductsController < ApplicationController
 
   def show
     @product = Product.find(params[:id])
+    set_metadata(:page_title => @product.name)
   end
 
   def create

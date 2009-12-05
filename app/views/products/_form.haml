@@ -12,7 +12,10 @@
   = f.text_field :name
   %br
   = label_tag "product_kind","Product type"
-  = radio_button "product","kind", "food" 
+  - if @product.kind.blank?
+    = radio_button "product","kind", "food",:checked => "checked"
+  - else
+    = radio_button "product","kind", "food"
   = label_tag "product_kind_food", "Food"
 
   = radio_button "product","kind", "drink"
