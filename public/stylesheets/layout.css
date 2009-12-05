@@ -68,11 +68,11 @@ a.back {
       margin-bottom: 10px;
       color: #000;
       letter-spacing: 1px; }
-      #content ul#fsa_results li.green {
+      #content ul#fsa_results li.low {
         background-image: url(../images/green.png); }
-      #content ul#fsa_results li.amber {
+      #content ul#fsa_results li.medium {
         background-image: url(../images/amber.png); }
-      #content ul#fsa_results li.red {
+      #content ul#fsa_results li.high {
         background-image: url(../images/red.png); }
       #content ul#fsa_results li span {
         padding: 22px;
@@ -84,7 +84,8 @@ a.back {
           font-weight: normal; }
 
 #api p, #about p {
-  text-align: justify; }
+  text-align: justify;
+  margin: 10px auto; }
 
 form {
   background-color: #EEE;
@@ -162,7 +163,7 @@ button {
     font-size: 15px;
     font-weight: bold;
     display: inline-block;
-    width: 110px;
+    width: 120px;
     margin: 10px 0px; }
   #new_product label#product_kind_food, #new_product label#product_kind_drink {
     display: inline; }
@@ -179,8 +180,9 @@ button {
 
 #footer {
   position: absolute;
-  bottom: 10px;
+  bottom: 5px;
   right: 5px;
   color: #E5E5E5;
   font-family: verdana;
-  font-size: 12px; }
+  font-size: 12px;
+  margin: 0px; }

@@ -76,11 +76,11 @@ a.back
       :margin-bottom 10px
       :color #000
       :letter-spacing 1px
-      &.green
+      &.low
         :background-image url(../images/green.png)
-      &.amber
+      &.medium
         :background-image url(../images/amber.png)
-      &.red
+      &.high
         :background-image url(../images/red.png)
       span
         :padding 22px
@@ -94,6 +94,7 @@ a.back
 #api,#about
   p
     :text-align justify
+    :margin 10px auto
 
 form
   :background-color #EEE
@@ -166,7 +167,7 @@ button
     :font-size 15px
     :font-weight bold
     :display inline-block
-    :width 110px
+    :width 120px
     :margin 10px 0px
   label#product_kind_food, label#product_kind_drink
     :display inline
@@ -183,8 +184,9 @@ button
 
 #footer
   :position absolute
-  :bottom 10px
+  :bottom 5px
   :right 5px
   :color = !text_color
   :font-family verdana
   :font-size 12px
+  :margin 0px
