@@ -1,6 +1,6 @@
 *.log
 tmp/*
-
+public/stylesheets/*.css
 bin/*
 vendor/gems/*
 !vendor/gems/cache/
