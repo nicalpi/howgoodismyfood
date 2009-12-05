@@ -1,6 +1,6 @@
 class FrontController < ApplicationController
   def homepage
-   set_metadata(:page_title => "search for a product",:body_id => "homepage") 
+   set_metadata(:page_title => "search for a product",:body_id => "homepage",:description => "howgoodismyfood.com provide a simple output for nutrional values using fsa traffic light labeling system") 
   end
 
   def api
