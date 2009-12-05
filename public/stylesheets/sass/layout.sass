@@ -160,7 +160,7 @@ button
 #new_product
   :margin auto
   :text-align left
-  :width 530px
+  :width 300px
   ul
     :list-style none
   label
@@ -171,12 +171,17 @@ button
     :margin 10px 0px
   label#product_kind_food, label#product_kind_drink
     :display inline
+  label[for='product_kind_food'],label[for='product_kind_drink']
+    :width 50px
+
   input[type='text']
-    :width 300px
+    :width 50px
     :font-size 15px
     :line-height 18px
     :border 1px solid #474747 
     :padding 5px
+  #product_barcode,#product_name
+    :width 130px
   .per
     :font-size 15px
   .added_sugar

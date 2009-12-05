@@ -50,7 +50,7 @@ a {
     list-style: none;
     width: 150px; }
     #content ul#fsa_results li {
-      font-size: 20px;
+      font-size: 8px;
       font-weight: bold;
       width: 385px;
       height: 66px;
@@ -65,10 +65,10 @@ a {
       #content ul#fsa_results li.high {
         background-image: url(../images/mobile/red.png); }
       #content ul#fsa_results li span {
-        padding: 20px;
+        padding: 8px;
         display: block;
         text-align: left;
-        margin-left: 50px; }
+        margin-left: 20px; }
 
 form {
   background-color: #EEE;
@@ -125,7 +125,7 @@ button {
 #new_product {
   margin: auto;
   text-align: left;
-  width: 500px; }
+  width: 300px; }
   #new_product label {
     font-size: 15px;
     font-weight: bold;
@@ -133,9 +133,10 @@ button {
     width: 110px;
     margin: 10px 0px; }
   #new_product label#product_kind_food, #new_product label#product_kind_drink {
-    display: inline; }
+    display: inline;
+    width: 60px; }
   #new_product input[type='text'] {
-    width: 300px;
+    width: 50px;
     font-size: 15px;
     line-height: 18px;
     border: 1px solid #474747;
