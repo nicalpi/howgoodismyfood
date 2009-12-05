@@ -58,11 +58,11 @@ a {
       margin-bottom: 10px;
       color: #000;
       letter-spacing: 1px; }
-      #content ul#fsa_results li.green {
+      #content ul#fsa_results li.low {
         background-image: url(../images/mobile/green.png); }
-      #content ul#fsa_results li.amber {
+      #content ul#fsa_results li.medium {
         background-image: url(../images/mobile/amber.png); }
-      #content ul#fsa_results li.red {
+      #content ul#fsa_results li.high {
         background-image: url(../images/mobile/red.png); }
       #content ul#fsa_results li span {
         padding: 20px;

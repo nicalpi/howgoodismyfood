@@ -4,18 +4,26 @@ jQuery(document).ready(function(){
     if($(this).val() == "food") {
       //Type is food so the unit needs to be gr
       $(".per").each(function(){
-        $(this).html($(this).html().replace(/ml/,"g"));  
+        $(this).html($(this).html().replace(/100ml/,"100g"));  
       });
     }
     else{
       //Type is drink so the unit needs to be ml
       $(".per").each(function(){
-        $(this).html($(this).html().replace(/g/,"ml"));  
+        $(this).html($(this).html().replace(/100g/,"100ml"));  
       });
     }
     
     
   });
+
+  if($("input[type='radio'][name='product[kind]']").is(':checked')){
+    
+      $(".per").each(function(){
+        $(this).html($(this).html().replace(/100g/,"100ml"));  
+      });
+  }
+  added_sugar_test();
 
   //Home search display default text and toggle display
   var home_input = $("#homepage #search input[type='text']");
@@ -42,6 +50,22 @@ jQuery(document).ready(function(){
         $(this).val("Enter your product barcode");
       }
       });
+
+  $('#product_sugar').keyup(function(){
+    added_sugar_test();
+  });
 });
+
+function added_sugar_test(){
+
+    if($("#product_sugar").val() > 5){
+      $(".added_sugar").show();
+    }
+    else
+    {
+      $(".added_sugar").hide();
+    }
+  }
+
 
 

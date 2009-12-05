@@ -39,7 +39,7 @@ a.back
     :border 1px solid !text_color
 
 #header
-  h1
+  a
     :text-indent -3000000px
     :background-image url(../images/logo.png)
     :background-repeat no-repeat
@@ -62,6 +62,7 @@ a.back
   p
     :font-size 18px
     :margin-bottom 10px
+ 
   ul#fsa_results
     :margin 15px auto
     :list-style none
@@ -90,6 +91,9 @@ a.back
         em
           :font-weight normal
 
+#api,#about
+  p
+    :text-align justify
 
 form
   :background-color #EEE
@@ -149,12 +153,15 @@ button
   &.save
     :background url(../images/add_32.png) left 50% no-repeat
     :color #333
+    :margin 10px auto
     &:hover,&:focus
       :color #666
 #new_product
   :margin auto
   :text-align left
-  :width 500px
+  :width 530px
+  ul
+    :list-style none
   label
     :font-size 15px
     :font-weight bold
@@ -171,6 +178,8 @@ button
     :padding 5px
   .per
     :font-size 15px
+  .added_sugar
+    :display none
 
 #footer
   :position absolute

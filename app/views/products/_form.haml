@@ -4,46 +4,47 @@
   - unless flash[:error].blank?
     #flash.error
       = flash[:error]
+  %ul
+    %li
+      = f.label :barcode,"Barcode"
+      = f.text_field :barcode, :value => params[:q]
+    %li
+      = f.label :name, "Name"
+      = f.text_field :name
+    %li
+      = label_tag "product_kind","Product type"
+      - if @product.kind.blank?
+        = radio_button "product","kind", "food",:checked => "checked"
+      - else
+        = radio_button "product","kind", "food"
+      = label_tag "product_kind_food", "Food"
 
-  = f.label :barcode,"Barcode"
-  = f.text_field :barcode, :value => params[:q]
-  %br
-  = f.label :name, "Name"
-  = f.text_field :name
-  %br
-  = label_tag "product_kind","Product type"
-  - if @product.kind.blank?
-    = radio_button "product","kind", "food",:checked => "checked"
-  - else
-    = radio_button "product","kind", "food"
-  = label_tag "product_kind_food", "Food"
-
-  = radio_button "product","kind", "drink"
-  = label_tag "product_kind_drink", "Drink"
-  %br
-  = f.label :sugar, "Sugar:"
-  = f.text_field :sugar
-  %span.per per 100g
-  %br
-  = f.label :added_sugar, "Added sugar:"
-  = f.text_field :added_sugar
-  %span.per per 100g
-  %br
-  = f.label :fat, "Fat:"
-  = f.text_field :fat
-  %span.per per 100g
-  %br
-  = f.label :saturate, "Saturates:"
-  = f.text_field :saturate
-  %span.per per 100g
-  %br
-  = f.label :sodium, "Salt:"
-  = f.text_field :sodium
-  %span.per per 100g
-  %br
-  = f.label :portion, "Typical portion:"
-  = f.text_field :portion
-  %span.per in g
-  
-  %button.save
-    Save
+      = radio_button "product","kind", "drink"
+      = label_tag "product_kind_drink", "Drink"
+    %li
+      = f.label :sugar, "Sugar:"
+      = f.text_field :sugar
+      %span.per g per 100g
+    %li.added_sugar
+      = f.label :added_sugar, "Added sugar:"
+      = f.text_field :added_sugar
+      %span.per g per 100g
+    %li
+      = f.label :fat, "Fat:"
+      = f.text_field :fat,:default => "0"
+      %span.per g per 100g
+    %li
+      = f.label :saturate, "Saturates:"
+      = f.text_field :saturate
+      %span.per g per 100g
+    %li
+      = f.label :sodium, "Salt:"
+      = f.text_field :sodium
+      %span.per g per 100g
+    %li
+      = f.label :portion, "Typical portion:"
+      = f.text_field :portion
+      %span.per in g
+    
+    %button.save
+      Save

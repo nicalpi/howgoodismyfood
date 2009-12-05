@@ -16,12 +16,15 @@
   %body{:id => @body_id}
     #wrapper
       #header
-        %h1 How good is my food
+        %h1 
+          = link_to "How good is my food",root_path
       #content
         = yield
       #carousel
     #footer
-      Created by Theo Cushion and 
+      Crafted with love by 
+      = link_to "Theo Cushion","http://github.com/theoooo",:target => "blank"
+      and 
       = link_to "Nicolas Alpi","http://www.notgeeklycorrect.com",:target => "blank"
       | 
       = link_to "About",:controller => "front", :action => "about"

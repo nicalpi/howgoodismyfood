@@ -33,7 +33,7 @@ a.back {
     width: 95%;
     border: 1px solid !text_color; }
 
-#header h1 {
+#header a {
   text-indent: -3000000px;
   background-image: url(../images/logo.png);
   background-repeat: no-repeat;
@@ -68,11 +68,11 @@ a.back {
       margin-bottom: 10px;
       color: #000;
       letter-spacing: 1px; }
-      #content ul#fsa_results li.low {
+      #content ul#fsa_results li.green {
         background-image: url(../images/green.png); }
-      #content ul#fsa_results li.medium {
+      #content ul#fsa_results li.amber {
         background-image: url(../images/amber.png); }
-      #content ul#fsa_results li.high {
+      #content ul#fsa_results li.red {
         background-image: url(../images/red.png); }
       #content ul#fsa_results li span {
         padding: 22px;
@@ -82,6 +82,9 @@ a.back {
         font-weight: bold; }
         #content ul#fsa_results li span em {
           font-weight: normal; }
+
+#api p, #about p {
+  text-align: justify; }
 
 form {
   background-color: #EEE;
@@ -144,14 +147,17 @@ button {
     background: url(../images/bigsearch.png) left 50% no-repeat; }
   button.save {
     background: url(../images/add_32.png) left 50% no-repeat;
-    color: #333; }
+    color: #333;
+    margin: 10px auto; }
     button.save:hover, button.save:focus {
       color: #666; }
 
 #new_product {
   margin: auto;
   text-align: left;
-  width: 500px; }
+  width: 530px; }
+  #new_product ul {
+    list-style: none; }
   #new_product label {
     font-size: 15px;
     font-weight: bold;
@@ -168,6 +174,8 @@ button {
     padding: 5px; }
   #new_product .per {
     font-size: 15px; }
+  #new_product .added_sugar {
+    display: none; }
 
 #footer {
   position: absolute;
