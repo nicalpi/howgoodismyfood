@@ -10,4 +10,12 @@ class FrontController < ApplicationController
   def about
     set_metadata(:page_title => "About",:desciption => "Lean more about howgoodismyfood",:body_id => "about")
   end
+
+  def sitemap
+    @products = Product.all
+
+    respond_to do |format|
+      format.xml{render :layout => false}
+    end
+  end
 end
