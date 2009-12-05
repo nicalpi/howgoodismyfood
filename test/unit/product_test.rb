@@ -40,7 +40,7 @@ class ProductTest < ActiveSupport::TestCase
       missing = {:fibre => nil, :protein => nil, :fat => nil}
       @product = Factory.build :product, missing
       
-      (@product.inghighients - missing.keys).each {|present_inghighient|
+      (@product.ingredients - missing.keys).each {|present_inghighient|
         assert @product.per_portion[present_inghighient], "Expected :#{present_inghighient} to be present in #{@product.per_portion.inspect}"
       }
       
