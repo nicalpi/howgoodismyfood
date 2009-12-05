@@ -138,3 +138,17 @@ button {
     padding: 5px; }
   #new_product .per {
     font-size: 15px; }
+
+#footer {
+  position: absolute;
+  bottom: 10px;
+  right: 5px;
+  color: #E5E5E5;
+  font-family: verdana;
+  font-size: 12px; }
+  #footer a {
+    color: #E5E5E5;
+    text-decoration: underline; }
+    #footer a:hover, #footer a:focus {
+      text-decoration: underline;
+      font-weight: bold; }
