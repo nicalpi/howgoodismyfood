@@ -54,6 +54,11 @@ class ProductTest < ActiveSupport::TestCase
         assert !@product.valid?
       end
       
+      should "be invalid if greater than 100 even if total sugar <= 5" do
+        @product = Factory.build :product, :sugar => 4, :added_sugar => 120
+        assert !@product.valid?
+      end
+      
       should "be valid if =< than total sugar" do
         @product = Factory.build :product, :sugar => 6, :added_sugar => 6
         assert @product.valid?
