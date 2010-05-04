@@ -1,5 +1,6 @@
-gem "rails", "2.3.4"
-
+gem "rails", "2.3.5"
+gem "mysql"
+gem "haml"
 group :test do
   gem "shoulda"
   gem "factory_girl"
