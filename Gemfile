@@ -1,6 +1,6 @@
 gem "rails", "2.3.4"
 
-only :test do
+group :test do
   gem "shoulda"
   gem "factory_girl"
   gem "rr"
